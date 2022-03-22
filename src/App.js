@@ -34,7 +34,7 @@ const movies = {
   5: {id: 5, name: 'Get Out',},
 };
 /* Make a datastructure that allows you, easily, to display the required information */
-const filmFans = [
+const filmsAndTheirFansCheat = [
   {title:"Forest Gump", fans:['Nicholas Lain']},
   {title:"Get Out", fans:['Autumn Green', 'John Doe']},
   {title:"Million Dollar Baby", fans:[]},
@@ -45,14 +45,14 @@ const filmFans = [
 class App extends Component {
   render() {
     console.log("Hello Andy!");
-    const filmFans2 = Etl(profiles, users, movies);
+    const filmsAndTheirFans = Etl(profiles, users, movies);
     return (
       /****************************************************************/
       /* Build the page using React.creatElement                      */
       React.createElement('div', {className:'App'},
         <Banner />,
-        <Content1 profiles={profiles} users={users} movies={movies} filmFans2={filmFans2} />,
-        <Content2 filmFans={filmFans} />,
+        //<Content1 profiles={profiles} users={users} movies={movies} filmsAndTheirFans={filmsAndTheirFans} />,
+        <Content2 filmFans={filmsAndTheirFans} />,
       )
     )
   }

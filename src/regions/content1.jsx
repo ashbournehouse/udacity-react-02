@@ -5,7 +5,7 @@ class Content1 extends React.Component {
     const profiles = this.props.profiles
     const users = this.props.users
     const movies = this.props.movies
-    const filmFans2 = this.props.filmFans2
+    const filmsAndTheirFans = this.props.filmsAndTheirFans
     return (
       React.createElement('div', {className:'App-content', style: {backgroundColor:'#333399', padding:'2em'}},
         React.createElement('h2',{style: {color:'#aaaaaa'}},'How popular is MY favorite movie? (using React.createElement)'),       
@@ -20,13 +20,13 @@ class Content1 extends React.Component {
             ) // </li>
           })
         ), // </ul>
-        React.createElement('ul', {style: {color:'#00ff00'}}, `Films list length: ${filmFans2.length}`,
-          filmFans2.map(filmLike => {
-        	console.log(`Filmlike is: ${filmLike.title}`);
+        React.createElement('ul', {style: {color:'#00ff00'}}, `Films list length: ${filmsAndTheirFans.length}`,
+          filmsAndTheirFans.map(filmAndFans => {
+        	console.log(`Filmlike is: ${filmAndFans.title}`);
         	return (
-              React.createElement('li', {key: filmLike.title, style: {color:'#00ff00'}}, `Filem ID: ${filmLike.movieId} Film title: ${filmLike.title}`,
-                React.createElement('ol', {}, `Ordered List length is: ${filmLike.fans.length}`,                    
-                  filmLike.fans.map(fan => {
+              React.createElement('li', {key: filmAndFans.title, style: {color:'#00ff00'}}, `Filem ID: ${filmAndFans.movieId} Film title: ${filmAndFans.title}`,
+                React.createElement('ol', {}, `Ordered List length is: ${filmAndFans.fans.length}`,                    
+                  filmAndFans.fans.map(fan => {
                     console.log(`Fan is: ${fan}`);
                     return(
                       React.createElement('li', {key: fan}, 

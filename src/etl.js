@@ -11,27 +11,52 @@ function Etl(profiles, users, movies) {
   ];
   
   ***************************************************************/
-  
+   // initialise an array of movies title that can easily be sorted alphabetically
+  var movieTitles = []; 
   // initialise an array of movies (so that we can .map)
-  var filmFans = [];
-  console.log(`After initialisation, length of filmFans is: ${filmFans.length}`);
-  
+  var filmsAndTheirFans = [];
+ 
+  console.log(`After initialisation, length of filmFans is: ${filmsAndTheirFans.length}`);  
   console.log(movies)
   
-  // First fill the array of movies
+  // First fill the array of movies titles
   for (const key in movies) {
-    var likeList = new Object();
-    const movieId = movies[key].id
-    likeList['movieId'] = movies[key].id;
-    likeList['title'] = movies[key].name;
-    likeList['fans'] = [];
-    filmFans.push(likeList);
-    console.log(`Length of filmFans is: ${likeList['fans'].length}`);
+    movieTitles.push(movies[key].name);
   }
+  console.log('===========================');
+  movieTitles.map(title => {
+    console.log(title);
+  })
+  console.log('===========================');
+  movieTitles.sort();
+  console.log('Sorted:');
+  console.log('===========================');
+  movieTitles.map(title => {
+    console.log(title);
+  })
+  console.log('===========================');
+
+   // Working through in sorted order make 
+   // a second array of objects contining 
+   // movie title and users who 'favourite'
+   // that movie.
+   movieTitles.map(title => {
+    for (const key in movies) {
+      if (movies[key].name == title) {
+        var likeList = new Object();
+        const movieId = movies[key].id
+        likeList['movieId'] = movies[key].id;
+        likeList['title'] = movies[key].name;
+        likeList['fans'] = [];
+        filmsAndTheirFans.push(likeList);
+        console.log(`Length of filmFans is: ${likeList['fans'].length}`);
+      }
+    }
+  })
   
   // Now match fans to the movies
   for (const key in profiles) {
-    filmFans.map(filmLike => {
+    filmsAndTheirFans.map(filmLike => {
       if (filmLike.movieId == profiles[key].favoriteMovieID) {
         console.log(`Profile: ${profiles[key].id} Favourite movie ID: ${profiles[key].favoriteMovieID} Movie: ${filmLike.title}`)
         filmLike['fans'].push(users[profiles[key].userID].name)
@@ -39,7 +64,7 @@ function Etl(profiles, users, movies) {
     })
   }
 
-  return filmFans
+  return filmsAndTheirFans
 }
 
 export default Etl;
