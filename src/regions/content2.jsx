@@ -10,13 +10,13 @@ class Content2 extends React.Component {
           filmFans.map(film => {
         	const fans = Array.from(film.fans);
             return(
-              React.createElement( 'li', {},
+              React.createElement( 'li', {key: film.title},
                 React.createElement('h4', {style: {color:'#000000', padding:'0.5em'}}, `${film.title}`),
                 React.createElement('h4', {style: {color:'#000000', padding:'0.5em'}}, (fans.length > 0) ? `Liked by:` : 'Liked by: no-one'),
                 React.createElement('ol', {},                     
                   fans.map(fan => {
                     return(
-                      React.createElement('li', {}, 
+                      React.createElement('li', {key: fan}, 
                         React.createElement('h4', {style: {color:'#000000', padding:'0.5em'}}, `${fan}`)
                       )
                     )

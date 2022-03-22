@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Etl from './etl.js'
 import Banner from './regions/banner.jsx';
 import Content1 from './regions/content1.jsx';
 import Content2 from './regions/content2.jsx';
@@ -43,12 +44,14 @@ const filmFans = [
 
 class App extends Component {
   render() {
+    console.log("Hello Andy!");
+    const filmFans2 = Etl(profiles, users, movies);
     return (
       /****************************************************************/
       /* Build the page using React.creatElement                      */
       React.createElement('div', {className:'App'},
         <Banner />,
-        <Content1 profiles={profiles} users={users} movies={movies} />,
+        <Content1 profiles={profiles} users={users} movies={movies} filmFans2={filmFans2} />,
         <Content2 filmFans={filmFans} />,
       )
     )
